@@ -1,5 +1,4 @@
 const path = require('path');
-const ESLintPlugin = require('eslint-webpack-plugin');
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.config.common');
@@ -23,21 +22,10 @@ module.exports = () => merge(common, {
       },
       progress: true,
     },
-    server: {
-      type: 'http',
-      options: {
-        ca: './cert/myCA.pem',
-        key: './cert/localhost.key',
-        cert: './cert/localhost.crt',
-      },
-    },
   },
   plugins: [
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(false),
-    }),
-    new ESLintPlugin({
-      extensions: ['js', 'jsx'],
     }),
   ],
   module: {
