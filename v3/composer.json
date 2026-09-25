@@ -1,0 +1,14 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "^7.9",
+        "granam/czech-vocative": "^2.2",
+        "tamtamchik/namecase": "^3.0",
+        "webklex/php-imap": "^6.2",
+        "google/apiclient": "^2.18"
+    },
+    "config": {
+        "platform": {
+            "php": "8.1.0"
+        }
+    }
+}
