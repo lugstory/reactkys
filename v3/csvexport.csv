@@ -1,0 +1,657 @@
+;id;name;obor;"V˝znam˝ partner";Velertr26;Kontakty
+;916;"100MEGA Distribution";ELE,IT;;;2
+1;771;24usoftware;IT;;;1
+2;1;2N;IT;;1;1
+3;630;"3E Praha Engineering";IT;;;2
+4;892;4each;IT;;;1
+5;629;602;IT;;;1
+6;6;"ABB s.r.o.";IT;;;2
+7;604;"ABBAS ";IT;;;1
+8;937;ABIS;ELE;;;1
+9;349;Abra;IT;;;3
+10;894;"ACE IT";IT;;;
+11;732;Acomware;IT;;;3
+12;8;A»R;IT;1;;4
+13;364;active24;IT;;;1
+14;408;ADASTRA;IT;;;1
+15;9;"ADAX s.r.o.";ELE;;;1
+16;961;"ADEZ PRAHA S.R.O.";ELE;;;1
+17;970;"advanced micro testers";ELE;;;1
+18;10;"Advanced Technology Partners s.r.o.";IT;;;1
+19;716;Agretimo;IT;;;1
+20;12;"Air Bank";IT;;;1
+21;949;"AkustickÈ centrum";ELE;;;1
+22;602;"Alarm Absolon";IT;;;1
+23;28;"AlarmovÈ SystÈmy (ASCZ)";IT;;;2
+24;986;"Alef Nula";IT;;;1
+25;980;"Alfa Union";ELE;;;1
+26;758;"All In Web Service";IT;;;1
+27;15;"Allcomp a.s.";ELE;;;1
+28;809;Alpiq;ELE;;;1
+29;801;"ALTEPRO solutions a.s.";IT;;;2
+30;817;alternativo;IT;;;1
+31;649;"Altis Security s.r.o.  ";IT;;;1
+32;17;Alza.cz;IT;;;3
+33;832;Amaro;ELE;;;
+34;20;"AMiT s.r.o.";ELE,IT;;1;5
+35;21;Amtech;IT;;;
+36;434;"Anabix CRM";IT;;;1
+37;22;Annexnet;IT;;;1
+38;24;"Antee s.r.o.";IT;;;1
+39;845;"Apek | Asociace pro elektronickou komerci (APEK)";IT;;;1
+40;457;Apertia;IT;1;;2
+41;915;apha;ELE,IT;;;1
+42;618;Applifting;IT;;;1
+43;709;appsisto;IT;;;1
+44;780;APS;IT;;;1
+45;468;Arbes;IT;;;1
+46;885;"Aricoma Systems";IT;;;1
+47;548;"ARION spol. s r.o.";IT;;;2
+48;1001;Artex-is;IT;;1;1
+49;184;Artin;IT;;;1
+50;964;"Aseta services";ELE;;;1
+51;29;"Asix s.r.o.";ELE;;;1
+52;621;"Asociace datov˝ch center, z.s.";IT;;;1
+53;323;AspectWorks;IT;;;1
+54;941;"Asseco Solution";IT;;;1
+55;30;"Assist s.r.o.";IT;;;2
+56;31;"Astra Security a.s.";ELE;;;1
+57;883;"ATC Energo";ELE;;;1
+58;866;"Atlantis telecom";ELE,IT;;;1
+59;32;"ATOS IT Solutions and Services s.r.o.";IT;;;2
+60;931;Atrak;ELE;;;1
+61;827;"Aura medical";;;;
+62;664;"AUREL CZ s.r.o.";IT;;;
+63;966;"Aux technology";ELE;;;1
+64;852;"AV media";ELE,IT;;;3
+65;36;"Avast Software";ELE;;;
+66;838;"Avenga Czechia (qinshift)";IT;;;
+67;821;Axa-assistance;IT;;;
+68;672;Axians;IT;;;2
+69;638;"AZ elektro";IT;;;1
+70;38;"AZ Eletroprojekce s.r.o.";ELE;;;1
+71;40;"AéD Praha s.r.o.";IT;;;2
+72;42;"Baader Computer spol. s r.o.";IT;;;
+73;959;Backbone;IT;;;1
+74;663;"BAGHIRRA s.r.o.";IT;;;1
+75;939;Baka;IT;;;
+76;843;Balonton;ELE;;;1
+77;925;Barleysolutions;IT;;1;1
+78;725;Base;IT;;;1
+79;718;bbrands;IT;;;1
+80;665;"BCS Automotive Interface Solutions";IT;;1;2
+81;351;"BCV solutions s.r.o .";IT;;;2
+82;501;BetSys;IT;;;1
+83;712;"BinSmart EU s.r.o";IT;;;1
+84;492;BIS;IT;1;1;1
+85;997;"Biz BOx";IT;;;1
+86;46;"Blue Panther s.r.o.";ELE;;;1
+87;326;"blue-infinity s. r. o.";IT;;;
+88;994;BlueGhost;IT;;;1
+89;936;"Blumenbecker Prag";ELE;;;1
+90;790;"Bohemia Interactive A.S.";IT;;;2
+91;50;Bosch;ELE;;;2
+92;963;Brema;ELE;;;1
+93;975;"Brinks cash solution";IT;;;1
+94;53;"BSL s.r.o.";IT;;;1
+95;54;"BSP Technology";IT;;;1
+96;996;BSshop;IT;;;1
+97;626;btlnet;IT;;1;4
+98;657;"B¸hler Praha s.r.o.";ELE;;1;6
+99;891;"BUREAU VERITAS CERTIFICATION";IT;;;1
+100;55;"Businesscom a.s.";ELE;;;1
+101;56;"Byzance IT";IT;;;1
+102;770;callida;IT;;;1
+103;470;Canon;IT;;;1
+104;791;"Capcom slaboproudÈ systÈmy s.r.o.";ELE;;;1
+105;917;"CARBOUNION INVEST";ELE,IT;;;3
+106;723;carebot;IT;;;1
+107;696;"Carl Zeiss";IT;;1;1
+108;860;"Carrier ChladicÌ Technika";ELE;;;1
+109;60;"CASABLANCA INT s.r.o.";IT;;1;1
+110;938;CCS;ELE,IT;;;1
+111;895;"»D - infrormaËnÌ systÈmy";IT;;;
+112;82;"»D Telematika a.s.";ELE;;;2
+113;61;"CDC Data s.r.o.";IT;;;1
+114;63;cdn77;IT;;;1
+115;816;Cebia;ELE,IT;;;1
+116;64;"Cegelec a.s.";IT;;;1
+117;729;"CENDIS, s.p.";IT;;;1
+118;84;»EPS;IT;;;2
+119;335;certicon;IT;;;2
+120;981;"»esk· it akademie";IT;;;1
+121;922;"»esk· leteck· servisnÌ a.s. (CLS)";ELE;;1;1
+122;711;"»esk· podnikatelsk· pojiöùovna (CPP)";IT;;;1
+123;86;"»esk· Pojiöùovna";IT;;;
+124;87;"»esk· spo¯itelna (Ësas)";IT;;;4
+125;89;"»esk· televize (»T)";IT;1;;3
+126;613;"»eskÈ dr·hy";ELE;;1;1
+127;90;"»eskÈ Radiokomunikace (CRA)";IT;;1;7
+128;608;"»ESK˝ INSTITUT INFORMATIKY ROBOTIKY KYBERNETIKY";IT;;;2
+129;944;"»esk˝ metrologick˝ institut (Ëmi)";ELE,IT;;;1
+130;697;Cetin;IT;;;1
+131;94;"»EZ Distribuce a.s.";ELE;1;1;2
+132;704;"CGI IT Czech Republic s.r.o.";IT;;;2
+133;764;cgs-labs;IT;;;1
+134;95;"»IP plus s.r.o.";ELE;;;1
+135;889;Cisco;IT;;;1
+136;69;"Clasic CZ s.r.o.";ELE;;;1
+137;71;cloudinfrastack;IT;;;1
+138;856;CloudTEK;IT;;;1
+139;600;"»MIS s.r.o.";IT;;;1
+140;72;"CMS Consulting s.r.o.";IT;;;1
+141;822;"cnw computer network";IT;;;1
+142;681;"Coca-Cola HBC";IT;;;
+143;877;Colsys;ELE,IT;;;2
+144;73;"ComAp a. s.";IT;1;1;2
+145;599;"Commerzbank AG";IT;1;1;6
+146;985;COmPRAg;IT;;;1
+147;662;"Comproject s.r.o.";IT;;;1
+148;313;"Computer System Group";ELE,IT;;;2
+149;74;"con4PAS a.s.";IT;;;1
+150;76;"Conrad electronic";IT;;;2
+151;77;"Continental Automovie Czech Rep.";IT;;;3
+152;703;"COOLHOUSING Data Center";IT;;;1
+153;79;Coolpeople;IT;;;2
+154;888;"CoreIT s.r.o.";IT;;;1
+155;957;corpus;IT;;;1
+156;324;CRV;IT;;;1
+157;1003;"CS SOFT a.s.";ELE;;;1
+158;96;»SOB;IT;;;
+159;741;"»SOB Pojiöùovna";IT;;;2
+160;153;Cubeteam;IT;;;1
+161;720;Cyberchain;IT;;;1
+162;796;Cybosec;IT;;;1
+163;829;"Cybosec (Bitdefender)";IT;;;1
+164;733;Cybrela;IT;;;1
+165;354;"CZ NIC,  Turris";IT;;;1
+166;857;"Czech software Consultancy";IT;;;1
+167;81;"Cznet s.r.o.";IT;;;1
+168;99;"D&C s.r.o.";IT;;;1
+169;742;D.A.S.;IT;;;1
+170;459;D3S;IT;;;1
+171;969;Daktela;IT;;;
+172;635;Dami;IT;;;1
+173;100;"Dasko Net s.r.o.";IT;;;1
+174;841;"Data delivery protection center (dpdc)";IT;;;1
+175;705;"Data Evolution s.r.o.";IT;;;1
+176;101;"Data Interservis";IT;;;1
+177;593;Datari;IT;;;1
+178;103;"Datera s.r.o.";IT;;;2
+179;105;"Dazzle s.r.o.";ELE;;;1
+180;106;DC4U;IT;1;1;3
+181;107;"DCO s.r.o.";ELE;;;1
+182;109;"Definity Systems s.r.o.";IT;;;1
+183;578;"DEGA CZ s.r.o.";IT;;;1
+184;111;deilote;IT;;;
+185;637;DEL;IT;;;2
+186;113;DELL;IT;;;
+187;110;DELTACOMP;IT;;;1
+188;607;"DENEVY, s.r.o.";IT;;1;3
+189;491;devinn;IT;;;5
+190;782;"devteam s.r.o.";IT;;;1
+191;112;DHL;IT;;;1
+192;670;DIA;IT;;1;2
+193;784;"Diametral a.s.";ELE;;1;2
+194;115;"Dicotech s.r.o.";IT;;;1
+195;116;"Diebold Nixdorf s.r.o.";IT;;;1
+196;945;Digiskills;IT;;;1
+197;933;"Digital resources";IT;;;1
+198;859;"Digit·lnÌ informaËnÌ agentura (DIA)";IT;;;
+199;590;"Digiteq automotive";IT;;;2
+200;117;"Dimension Data.";IT;;;
+201;743;"Direct pojiöùovna, a.s.";IT;;;2
+202;907;dnai;IT;;;1
+203;601;DNS;IT;;;1
+204;118;"DopravnÌ podnik hl. m. Prahy";IT;;1;4
+205;641;"E*tech, spol. s r.o. ";IT;;;1
+206;786;E-invent;IT;;;1
+207;119;"E-solutions s.r.o.";IT;;;1
+208;968;E-therm;ELE;;;1
+209;121;"E.ON »esk· republika";IT;;;
+210;122;"Eaton Elektrotechnika s.r.o.";ELE;;;3
+211;579;ECOM;IT;;;1
+212;840;"Econet Computers spol. s r.o.";IT;;1;1
+213;882;"Edscha Automotive Kamenice s.r.o.";ELE;;;1
+214;737;"Educasoft Solutions, s.r.o.";IT;;;1
+215;901;Efteria;ELE;;;1
+216;745;"EGAP (ExportnÌ garanËnÌ a pojiöùovacÌ)";IT;;;1
+217;422;"EI SERVICES s.r.o.";IT;;;2
+218;974;EIM;ELE;;;1
+219;849;EISAS;IT;;;1
+220;123;EK-automation;ELE;;;1
+221;884;"El ñ Morrel";ELE,IT;;;1
+222;321;"ELDATA Praûsk· s.r.o.";IT;;;1
+223;124;"ElektrickÈ systÈmy";IT;;;1
+224;707;"elektro s.r.o.";ELE;;;1
+225;125;"Elektroinstalace s.r.o.";ELE;;;1
+226;126;Elektroline;ELE;1;;1
+227;127;"ElektronickÈ systÈmy";ELE;;;1
+228;128;Elektrotechnika;ELE;;;1
+229;979;Elevup;IT;;;
+230;129;ELMEP;IT;;;1
+231;131;"ElmozCzech s.r.o.";IT;;;1
+232;132;"Eltodo a.s.";IT;;;1
+233;897;ELVIA;ELE;;;1
+234;18;Elvira;ELE;;;1
+235;134;"Energocentrum Plus s.r.o.";ELE;;;1
+236;135;"Enersys s.r.o.";ELE;;;
+237;775;EON;ELE;;1;1
+238;695;Eplan;IT;;1;2
+239;652;Epptec;IT;;1;2
+240;978;Eprovement;IT;;;1
+241;136;equabank;IT;;;1
+242;806;equans;ELE,IT;;1;2
+243;138;"Eriell Services s.r.o.";ELE;;;1
+244;744;"ERV Evropsk· pojiöùovna";IT;;;2
+245;139;ESET;IT;;;1
+246;971;Esonic;ELE;;;1
+247;655;etnetera;IT;;;1
+248;603;Eurosat;IT;;;1
+249;807;"Eurowag (W.A.G.)";ELE,IT;;;
+250;812;Eviden;IT;;;1
+251;977;"Eviden czech republic s.r.o";IT;;;
+252;142;"EY (Ernest & Young)";IT;;;1
+253;315;"EYELEVEL s.r.o.";IT;;;
+254;203;Fanuc;IT;;;2
+255;846;Finshape;IT;;;1
+256;896;"Flex Databases";IT;;;
+257;818;Flowbox;ELE;;;2
+258;145;"Formica Group s.r.o.";IT;;;
+259;146;"FORTUNA ";IT;;;1
+260;730;"Foxtron s.r.o.";IT;;;1
+261;913;Freelo;IT;;;1
+262;150;Fronius;ELE;;;1
+263;151;"FSPNET s r.o.";IT;;;2
+264;152;"Fujitsu Technology Solutions s.r.o.";IT;;;1
+265;926;Gappex;IT;;1;1
+266;154;"GatingServices a.s.";ELE;;;1
+267;713;geetoo;IT;;;1
+268;156;"Gema s.r.o.";ELE;;;1
+269;157;"Generali Pojiöùovna a.s.";IT;;;1
+270;4;"GIT Consult Czech s.r.o.";IT;;;2
+271;893;"Global payments Europe";IT;;;1
+272;867;"GNSS center of Excellence";ELE,IT;;;1
+273;426;Gordic;IT;;1;3
+274;158;"Green Center";IT;;;3
+275;347;GWL;IT;;;
+276;874;"GZ Media";ELE,IT;;1;2
+277;367;"ha-vel internet s. r. o.";IT;;1;2
+278;746;"HALALI, vöeobecn· pojiöùovna,a.s.";IT;;1;2
+279;747;"HasiËsk· vz·jemn· pojiöùovna, a.s.";IT;;;1
+280;180;"HE3DA s.r.o.";ELE;;;1
+281;162;"Hewlett Packart (HP, HPE)";IT;;;2
+282;766;"Hexagon Manufacturing Intelligence ";ELE,IT;;;1
+283;325;HQS-net;IT;;;1
+284;660;"HR with me";IT;;;1
+285;987;"HRO Technology";ELE;;;1
+286;819;Huawei;ELE;;;
+287;861;"Hub·Ëek & Samek s.r.o.";ELE;;;1
+288;506;"Hurican Czech, s.r.o";IT;;;1
+289;634;"HW group";ELE,IT;;1;1
+290;929;"HZS hl. m. Prahy (hasiËi)";ELE,IT;;1;1
+291;774;i.cz;IT;;;1
+292;407;"IBA CZ, s.r.o. ï";IT;;1;3
+293;169;IBM;IT;;;
+294;474;ICZ;IT;;;1
+295;659;"ID strory";IT;;;1
+296;317;"IFA SErvices";IT;;;
+297;183;ifaservices;IT;;;1
+298;706;"IMA s.r.o.";IT;;1;1
+299;164;"Impression Media s.r.o.";IT;;;1
+300;853;"impromat computer";IT;;;1
+301;167;"Income s.r.o.";IT;;;1
+302;168;"Indukce s.r.o.";IT;;;1
+303;958;Ingos;ELE;;;1
+304;699;Inited;ELE;;;1
+305;911;InsightHome;ELE,IT;;;1
+306;172;"Instalace Praha";ELE;;1;3
+307;174;"Intedo s.r.o.";IT;;1;1
+308;392;interconnect;IT;;;3
+309;675;"International Video Communication (IVC)";IT;;;1
+310;781;"Intuition Studio s.r.o.";IT;;;1
+311;772;intuitionstudio;IT;;;1
+312;358;Inveo;IT;;;4
+313;175;"IPsecurity s.r.o.";ELE;;;1
+314;585;"IPSOS s.r.o., ";IT;;;
+315;805;Iromez;ELE;;;1
+316;176;IRQF;IT;;1;1
+317;757;ISECO;IT;;;1
+318;842;"Isystems (intelligent systems)";IT;;;1
+319;619;"IT ProfÌk s.r.o.";IT;;;1
+320;650;ITassistance;IT;;;2
+321;765;ITS;IT;;;3
+322;955;ixperta;IT;;;1
+323;181;Jablotron;IT;;;
+324;320;"JM-Net z.s.";IT;;;1
+325;420;K-net;IT;;;2
+326;188;K2;IT;;;1
+327;869;"Kancel·¯skÈ stroje s.r.o.";IT;;;1
+328;316;"KAPA Services s.r.o.";IT;;;1
+329;566;karat;IT;;;1
+330;965;kart;ELE;;;1
+331;398;Kaspersky;IT;;;1
+332;187;KB;IT;;1;2
+333;567;Keloc;IT;;;1
+334;646;Kenvue;IT;;;1
+335;332;"KEYENCE International";IT;;;1
+336;815;kinet;IT;;;1
+337;887;"KnVnet services";ELE,IT;;;1
+338;189;Kodys;IT;;;1
+339;748;"KomerËnÌ pojiöùovna, a.s.";IT;;;1
+340;935;"KOMTERM ";ELE;;;1
+341;921;"Kondor s.r.o.";ELE;;;1
+342;954;Kone;ELE;;;1
+343;475;Konica;IT;;;3
+344;749;"Kooperativa pojiöùovna";IT;;;3
+345;191;Kosina;IT;;;1
+346;942;"Kostal engineering";ELE;;;1
+347;192;Krugostav;ELE;;;
+348;568;KTK;IT;;;1
+349;631;Kuka;IT;;;1
+350;574;Kvados;IT;;;5
+351;193;"Langard s.r.o.";ELE;;;1
+352;831;LEGO;ELE,IT;;1;3
+353;197;Lenovo;IT;;;
+354;855;LinDAB;ELE;;;1
+355;656;"Lion century";IT;;;1
+356;581;Livio;IT;;;3
+357;198;LMC;IT;;;1
+358;881;"LOM PRAHA s.p.";ELE;;;1
+359;803;"Look AI";IT;;;1
+360;930;Loxone;IT;;;1
+361;195;Lukapo;IT;;;2
+362;196;"M&M Elstav s.r.o.";ELE;;;1
+363;202;made4net;IT;;;
+364;902;Mafra;IT;;;1
+365;530;"MageXo s.r.o.";IT;;;1
+366;828;Mavenir;ELE,IT;;;
+367;200;MAXPROGRES;IT;;;1
+368;425;mblue;IT;;;
+369;201;"MBtech Bohemia/ AKKA";ELE;;;
+370;206;McKisney;IT;;;
+371;932;"MD Machinery s.r.o.";ELE;;;1
+372;676;"MEGAFLEX sro";ELE;;;2
+373;610;"Memodo s.r.o. ";IT;;;2
+374;204;"Memos software";IT;;;1
+375;950;MemSEP;ELE;;;1
+376;416;Memsource;IT;;;1
+377;205;"Meriis s.r.o.";IT;;;3
+378;207;"Metallife s.r.o.";IT;;;
+379;785;Metiosoftware;IT;;;5
+380;750;Metlife;IT;;;1
+381;934;"MHM computers";IT;;;1
+382;871;"MICRO CZECH REPUBLIC";ELE;;;1
+383;927;"MICRORISC s.r.o.";ELE;;;1
+384;208;Microsoft;IT;1;;2
+385;708;"MindBe s.r.o.";IT;;;1
+386;209;"Mineus s.r.o.";IT;;;1
+387;210;"Miricom s.r.o.";ELE;;;1
+388;211;Mironet;IT;;;2
+389;212;"Misan s.r.o.";ELE;;;2
+390;400;"mobil pohotovost";IT;;;1
+391;218;Moneta;IT;;;1
+392;738;"Motion Electronics";ELE;;;1
+393;909;MäMT;IT;;;3
+394;444;myAvis;IT;;;1
+395;338;"MyCom Solutions";IT;;;
+396;216;"Myq Solution";IT;;;2
+397;350;NAKIT;IT;;;1
+398;813;NARAWEBS;IT;;;1
+399;577;"Narran s.r.o.";IT;;;2
+400;973;Naucrates;IT;;1;1
+401;569;Navertica;IT;;;1
+402;478;Navisys;IT;;;2
+403;217;NEATOUS;IT;;;1
+404;219;"Neit Consulting";IT;;;
+405;702;Neotec;IT;;;2
+406;755;Neronianstudios;IT;;;3
+407;220;NestlÈ;IT;;;2
+408;995;NetDirect;IT;;;2
+409;728;Netmate;IT;;;1
+410;992;"NetRex s.r.o.";IT;;1;2
+411;555;Netservis;IT;;;1
+412;769;NETTEX;IT;;1;1
+413;740;"NETTO Electronics s.r.o. ";ELE;;;1
+414;417;"Networksys a.s.";IT;;;1
+415;804;NeurIT;IT;;;1
+416;1002;"NEWTON University - Facility management";IT;;;
+417;534;Nix.cz;IT;;;1
+418;352;"NN IT Hub";IT;1;;
+419;633;NO77;IT;;;1
+420;632;Noark;IT;;;1
+421;536;"NOTIX s.r.o.";IT;;1;5
+422;223;"Notservis a.s.";IT;;;1
+423;224;Novatec;IT;;;1
+424;537;"Novitim s.r.o.";IT;1;;1
+425;779;NTL;ELE,IT;;;2
+426;538;"NTT Czech Republic s.r.o.";IT;;;1
+427;928;"NTT DATA, Inc.";IT;;;1
+428;794;NubilumICT;IT;;;1
+429;225;"O2 IT services";IT;;;1
+430;227;Obis;IT;;;1
+431;228;"OG Soft s.r.o.";ELE;;;1
+432;625;"OK system";IT;;1;1
+433;924;Omnicado;IT;;1;2
+434;620;"OMNITRON s.r.o";IT;;;1
+435;229;Onlio;IT;;;1
+436;230;"Open Text s.r.o.";IT;;;
+437;405;"Oper·tor ICT, a. s.";IT;;;
+438;876;Operis;ELE;;;1
+439;654;Oracle;IT;;;1
+440;823;"ORBIT MERRET, s.r.o.";ELE;;;1
+441;826;OrliËan;ELE;;;1
+442;231;P»R;IT;1;1;2
+443;920;"P»R  - prezidium technici, krimi";ELE,IT;;1;2
+444;762;pe3ny;IT;;;2
+445;982;PEG;ELE;;;2
+446;232;"Penta Trading s.r.o.";ELE;;;2
+447;233;"PHOTON ENERGY GROUP";IT;;;1
+448;825;PiezoNova;ELE;;;1
+449;643;"PII praha prahainovacni";IT;;;2
+450;990;Pixelfield;IT;;;1
+451;835;"PlzeÚsk˝ Prazdroj";ELE,IT;;1;1
+452;235;"Power- Energo s.r.o.";ELE;;;2
+453;956;Prakab;ELE;;;1
+454;368;Pranet;IT;;;1
+455;793;"Praûsk· plyn·rensk· (PPAS)";ELE,IT;;1;1
+456;237;"PRE Praûsk· energetika a.s.";IT;;;
+457;836;"Prima TV";ELE,IT;;;
+458;735;Primestore;IT;;;1
+459;940;Primetals;ELE;;;1
+460;360;Printup;IT;;;1
+461;419;"PRO-ZETA a.s.";IT;;;1
+462;238;"Process Automation Solutions s.r.o.";IT;;;
+463;397;"Profinit EU";IT;;;2
+464;413;Promsat;IT;;;3
+465;240;Pronix;IT;;;1
+466;241;"Prusa Research s.r.o.";ELE;;;2
+467;851;"PrvnÌ Ëesk· energie";ELE;;;1
+468;243;pwc;IT;;;
+469;480;"Ql Group";IT;;;
+470;773;quantcom;IT;;;1
+471;539;Qusion;IT;;;1
+472;245;"R4U s.r.o.";IT;;;1
+473;244;Raiffeisenbank;IT;;;2
+474;993;Rakio;IT;;1;1
+475;839;"Rapet-servis s.r.o.";ELE;;;1
+476;844;Raventia;IT;;;1
+477;450;"Raynet CRM";IT;;;1
+478;754;"RBP, zdravotnÌ pojiöùovna";IT;;;3
+479;246;Redhat;IT;;;1
+480;914;Regiojet;ELE,IT;;1;2
+481;247;"Rejnok s.r.o.";ELE;;;1
+482;248;"Repic soft s.r.o.";ELE;;;1
+483;952;Repute;IT;;;1
+484;3;ResidIT;IT;;;1
+485;481;"Ricoh Czech Republic";IT;;;
+486;249;"Riganti s.r.o.";IT;;;1
+487;879;"ÿÌzenÌ letovÈho provozu";ELE,IT;;;
+488;253;"Rockwell Automation s.r.o.";IT;;;
+489;250;"Rotorama s.r.o.";ELE;;;1
+490;854;RotoTwin;ELE;;;
+491;423;"RSM CZ a.s.";IT;;;
+492;251;"RT Technik s.r.o.";ELE;;;1
+493;563;RTS;IT;;;
+494;322;"Rychl˝ dr·t";IT;;;
+495;554;ryston;IT;;;2
+496;788;"S a T CZ";ELE,IT;;;
+497;983;"S-power Energies";ELE;;;1
+498;962;"saba clickpark";IT;;;1
+499;960;"Samsung cz a SK";ELE,IT;;;1
+500;783;SAP;IT;;;1
+501;259;"Schenker s.r.o.";ELE;;;2
+502;905;schneider-electric;ELE;;;4
+503;261;"Schrack technik";IT;1;1;2
+504;645;Scom;IT;;;
+505;912;"SE-VA technologies s.r.o.";ELE;;1;3
+506;353;"SEA spol. s r.o.";ELE;;;1
+507;636;Secheron;IT;;;1
+508;863;Securitas;ELE,IT;;;
+509;984;"Security technologies";ELE,IT;;;1
+510;834;äÈfbot;IT;;1;1
+511;483;Sefira;IT;;;
+512;797;"Server Control";IT;;;1
+513;802;SERVIND;ELE;;;1
+514;357;"Servodata a.s.";IT;;;
+515;875;Seyfor;IT;;;
+516;257;Seznam.cz;IT;1;1;3
+517;767;SHERLOG;ELE,IT;;;1
+518;988;Shift2cloud;IT;;;1
+519;998;Shopsys;;;;1
+520;361;"Shoptet a.s.";IT;;;
+521;734;Sick;ELE;;;1
+522;262;"Sidat s.r.o.";IT;;;1
+523;972;Sidet;ELE;;;1
+524;264;"Siemens Advanta";IT;1;;1
+525;870;"Siemens Mobility";ELE,IT;;;
+526;598;"Siemens, s.r.o.";IT;1;;2
+527;540;"SII s.r.o";IT;;;
+528;814;"Simetrica Media";IT;;;1
+529;976;Simpleway;ELE,IT;;;1
+530;999;Simplia;IT;;;1
+531;596;Sinfin;IT;;;1
+532;824;"Sirod- Vr·bel telekomunikace s.r.o";ELE,IT;;;2
+533;872;SITEL;ELE,IT;;;2
+534;731;äkoda;ELE,IT;1;;
+535;266;"Slavia Pojiöùovna a.s.";IT;;;1
+536;639;"Smart Bit";IT;;;2
+537;591;"Smart con";IT;;;1
+538;267;"Smart One s.r.o.";IT;;;1
+539;700;Smart1;IT;;;2
+540;756;"Smarty CZ (iwant)";ELE,IT;;1;2
+541;446;Soft-4-Sale;IT;;;1
+542;967;SoftCom;ELE,IT;;;1
+543;768;SOFTIM;IT;;;1
+544;848;"Software Consultancy, a.s.";IT;;;1
+545;268;"SOITRON s.r.o.";ELE;;;1
+546;673;Solicad;IT;;;1
+547;355;"Solitea a.s.";IT;;;1
+548;903;"Solutia ";IT;;;1
+549;647;"SOPO s.r.o.";IT;;;1
+550;847;"äpaËek digital";IT;;;1
+551;269;"SPC-net s.r.o.";ELE;;;2
+552;270;"Spel a.s.";ELE;;;2
+553;271;Spinoco;IT;;;1
+554;862;"Spr·va ûeleznic";ELE;;;
+555;272;"Sprinx Systems a.s.";IT;;;
+556;273;"st Microelectronics";IT;;;2
+557;644;Staropramen;IT;;;1
+558;837;"STASTO Automation";ELE;;;1
+559;658;"St·tnÌ pokladna Centrum sdÌlen˝ch sluûeb, s. p.";IT;;;2
+560;923;STEGG;ELE;;1;1
+561;611;"Steiner, s.r.o. ";IT;;;2
+562;908;stormware;;;;2
+563;541;"StringData, s.r.o";IT;;;2
+564;276;"Strojmetal Aluminium Forging s.r.o.";IT;;;
+565;810;STRV;IT;;;
+566;715;Studioxy;IT;;;1
+567;918;Sudop;ELE;;1;2
+568;795;suite;IT;;;1
+569;808;Suitest;ELE,IT;;;2
+570;760;SUMA;IT;;;2
+571;1000;sunlight;IT;;;1
+572;948;Sunnymont;ELE;;;1
+573;278;suPerhosting;IT;;;
+574;919;Synett;IT;;1;1
+575;559;Synology;IT;;;
+576;873;Syscon;IT;;;1
+577;678;SYSgo;IT;;;1
+578;726;"Systee s.r.o.";;;;1
+579;281;T-mobile;IT;;;3
+580;282;"Tactica s.r.o.";ELE;;;1
+581;337;Tacticaware;IT;;;
+582;671;"TDK Czech s.r.o.";IT;;;1
+583;284;"TECHart systems s.r.o.";IT;;;1
+584;880;"Technologie HlavnÌho mÏsta Prahy";ELE;;1;3
+585;864;"Teijin Automotive Technologies";ELE,IT;;;
+586;798;TelPro;IT;;;1
+587;285;"Temo-Telekomunikace a.s.";ELE;;;2
+588;627;"TESTALARM PRAHA spol. s r.o.";IT;;;1
+589;287;"Texas Instruments CZ";IT;;;
+590;677;Thein;IT;;;1
+591;330;"Thermo Fisher Scientific ";IT;;;1
+592;286;"THINline s.r.o.";IT;;;2
+593;288;"Tiscom s.r.o.";ELE;;;1
+594;787;"TMV SS spol. s r. o.";ELE;;;
+595;946;Tomsat;ELE;;1;1
+596;792;"TOSMAT Automatizace";ELE;;;1
+597;778;Totalservis;ELE,IT;;;1
+598;953;"Tov·rna na dokonalÈ programy (TDP)";IT;;;
+599;289;"TP link";IT;;;1
+600;290;"TRASK Solutions a.s.";IT;;;1
+601;906;Triada;IT;;;1
+602;291;tritiumsystems;ELE;;;1
+603;701;Tropicsquare;IT;;;1
+604;830;Trustsoft;IT;;;
+605;943;"TSP Data";IT;;;1
+606;719;"TTC apki";IT;;;1
+607;682;"TTC TELEPORT, s.r.o.";IT;;;1
+608;292;"TUV - SUD";IT;;1;2
+609;811;"TV Nova";ELE,IT;;;
+610;684;"U&C UAS";ELE;;;1
+611;543;"Ubiquiti Networks (Czech Republic) s.r.o.";IT;;;
+612;312;"⁄JV ÿeû";IT;;;1
+613;293;"Unicontrols a.s.";IT;;;1
+614;294;"Unicorn (Vigour)";IT;;1;4
+615;296;Unimed;ELE;;;1
+616;751;"Union poisùovna";IT;;;1
+617;789;"Uniongrid s.r.o.";ELE;;;1
+618;403;uniprog;IT;;;1
+619;752;"UNIQA pojiöùovna, a.s.";IT;;;2
+620;314;Unitronics;IT;;;1
+621;951;"universal production partners (UPP)";ELE;;;1
+622;759;Unlimitedmedia;IT;;;1
+623;592;"Unnits (Litea)";IT;;;2
+624;640;⁄ZSI;IT;;1;1
+625;300;Valeo;ELE,IT;;;1
+626;904;Vanco;IT;;;2
+627;302;Veeam;IT;;;
+628;544;"Vendavo CZ s.r.o";IT;;;1
+629;890;Verisoft;IT;;;1
+630;910;"Viable One";IT;;;1
+631;301;"Videoprogress servis";ELE;;;1
+632;878;"Viking Masek, a.s.";ELE,IT;;;1
+633;833;Viking-CNC;ELE;;;1
+634;736;"VIRIDIS informaËnÌ systÈmy, s.r.o.";IT;;;1
+635;850;"VIRTUAL ZOOM s.r.o.";IT;;;1
+636;628;Vlada.cz;IT;;;1
+637;800;Vocalls;IT;;;1
+638;303;Vodafone;IT;1;1;6
+639;753;"Vojensk· zdravotnÌ pojiöùovna";ELE;;;
+640;777;VPSdata;ELE;;;1
+641;305;"VS hosting";IT;;;2
+642;763;"VUMS LEGEND";IT;;;2
+643;306;"V˝tahy Praha »R s.r.o.";ELE;;;2
+644;898;VZP;IT;;;
+645;865;Wamag;ELE;;;
+646;724;Wavemaker;IT;;;1
+647;776;Wedos;IT;;;2
+648;820;"White Friday";IT;;;1
+649;333;WI;IT;;;1
+650;307;"Winsite a.s.";IT;;;1
+651;886;XLAB;ELE;;;2
+652;308;"Yaskawa Czech s.r.o.";IT;1;;4
+653;488;zaT;IT;;;1
+654;858;Zenit;ELE;;;1
+655;309;"Zerot s.r.o.";ELE;;;1

@@ -1,0 +1,10 @@
+DirectoryIndex index.php
+RewriteEngine Off
+
+RewriteRule ^firms/list$ http://lm/rest.php/firms/list [L,R=301]
+
+RewriteRule ^firms$ http://lm/rest.php/firms [L,R=301]
+
+RewriteRule ^firms/([0-9]+)$ http://lm/rest.php/firms/list/$1 [L,R=301]
+
+RewriteRule ^firms/list$ http://lm/rest.php/firms/contacts [L,R=301]
