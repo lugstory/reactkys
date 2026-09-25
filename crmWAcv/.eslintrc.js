@@ -27,6 +27,7 @@ module.exports = {
   rules: {
     'brace-style': ['error', '1tbs'],
     curly: ['error', 'all'],
+    'linebreak-style': 'off',
     'import/no-cycle': 'error',
     'import/order': [
       'error',

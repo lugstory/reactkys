@@ -8,6 +8,7 @@ import CampaignContactsList from './components/campaignContactsList';
 import CampaignList from './components/campaignList';
 import ChartComponent from './components/chartComponent';
 import ColumnList from './components/columnList';
+import ContactList from './components/contactList';
 import CampaignForm from './components/editCampaignForm';
 import EditEventForm from './components/editEventForm';
 import EventList from './components/eventsList';
@@ -15,12 +16,14 @@ import ExportForm from './components/exportForm';
 import FirmList from './components/firmList';
 // import GAuthProvider from './components/google/googleAuthProvider';
 import HideColm from './components/hideColm';
+import MeetList from './components/meetList';
 import Nav from './components/nav';
 import PracticeListTable from './components/practiceListTable';
 import Stats from './components/stats';
 import StatsByYears from './components/statsByYears';
 import StatsInvitations from './components/statsInvitations';
 import UrlProvider from './components/UrlProvider';
+import WorkshopList from './components/workshoplist';
 
 const AppContentInner = () => {
   const location = useLocation();
@@ -74,6 +77,9 @@ const AppContentInner = () => {
         <Route path="/campaignAdd" element={<CampaignForm />} />
         <Route path="/columnList" element={<ColumnList />} />
         <Route path="/exportForm" element={<ExportForm />} />
+        <Route path="/firm/:firmId/contacts" element={<ContactList />} />
+        <Route path="/firm/:firmId/meets" element={<MeetList />} />
+        <Route path="/firm/:firmId/workshops" element={<WorkshopList />} />
       </Routes>
     </>
   );

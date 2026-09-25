@@ -267,14 +267,11 @@ const FirmList = () => {
   };
 
   const handleEditContactClick = (id, name) => {
-    console.log(id);
-    setSelectedFirmName(name);
-    setSelectedContact(id);
+    navigate(`/firm/${id}/contacts`, { state: { firmName: name } });
   };
 
   const handleworkshoplistClick = (firmId, name) => {
-    setSelectedFirmName(name);
-    setSelectedWS(firmId);
+    navigate(`/firm/${firmId}/workshops`, { state: { firmName: name } });
   };
 
   const handleRestFilter = (RestData) => {
@@ -321,8 +318,7 @@ const FirmList = () => {
   };
 
   const handleEditMeetClick = (id, name) => {
-    setSelectedFirmName(name);
-    setSelectedMeet(id);
+    navigate(`/firm/${id}/meets`, { state: { firmName: name } });
   };
 
   const deleteFirm = async (firmId) => {
@@ -502,48 +498,12 @@ const FirmList = () => {
         </div>
       )}
 
-      {selectedGift ? (
-        <GiftList
-          firmId={selectedGift}
-          onSave={handleGift}
-          firmName={selectedFirmName}
-          onClose={handleCloseGift}
-        />
-      ) : ('')}
-
-      {selectedMeet ? (
-        <MeetList
-          firmId={selectedMeet}
-          onSave={handleMeet}
-          firmName={selectedFirmName}
-          onClose={handleCloseMeet}
-        />
-      ) : ('')}
-
       {selectedPractice ? (
         <PracticeList
           firmId={selectedPractice}
           onSave={handlePractice}
           firmName={selectedFirmName}
           onClose={handleClosePractice}
-        />
-      ) : ('')}
-
-      {selectedWS ? (
-        <WorkshopList
-          firmId={selectedWS}
-          onSave={handleWS}
-          firmName={selectedFirmName}
-          onClose={handleCloseWS}
-        />
-      ) : ('')}
-
-      {selectedContact ? (
-        <ContactList
-          firmId={selectedContact}
-          onSave={handleSaveContact}
-          firmName={getFirstPart(selectedFirmName)}
-          onClose={handleCloseContact}
         />
       ) : ('')}
 

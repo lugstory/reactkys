@@ -39,7 +39,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'React CRM',
-      template: './template/index.html',
+      template: './src/index.html',
     }),
     new CopyPlugin({
       patterns: [

@@ -80,7 +80,7 @@ const CampaignForm = () => {
       url,
       data: campaign,
     })
-      .then(() => navigate('/campaign'))
+      .then(() => navigate('/campaign', { state: { refresh: Date.now() } }))
       .catch((error) => console.error('Error saving campaign:', error));
   };
   console.log(campaign);

@@ -13,8 +13,9 @@ module.exports = () => merge(common, {
   },
   devServer: {
     historyApiFallback: true,
-    port: 9000,
-    open: true,
+    port: 3000,
+    host: '0.0.0.0',
+    open: false,
     client: {
       logging: 'verbose',
       overlay: {
@@ -25,11 +26,6 @@ module.exports = () => merge(common, {
     },
     server: {
       type: 'http',
-      options: {
-        ca: './cert/myCA.pem',
-        key: './cert/localhost.key',
-        cert: './cert/localhost.crt',
-      },
     },
   },
   plugins: [

@@ -2,13 +2,19 @@
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import EditContactForm from './editContactForm';
 import Notification from './notification';
 import { useUrl } from './UrlProvider';
 
 const ContactList = ({
-  firmId, firmName, onClose, onSave,
+  firmId: propFirmId, firmName: propFirmName, onClose, onSave,
 }) => {
+  const { firmId: routeFirmId } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const firmId = propFirmId ?? routeFirmId;
+  const firmName = propFirmName ?? location.state?.firmName ?? 'Firma';
   const { apiUrl } = useUrl();
   const [contacts, setContacts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -53,6 +59,11 @@ const ContactList = ({
   };
   const handleClose = () => {
     setSelectedContact(null);
+    if (onClose) {
+      onClose();
+      return;
+    }
+    navigate(-1);
   };
 
   const handledelClick = (contact) => {
@@ -68,7 +79,11 @@ const ContactList = ({
   const handleKeyDown = (event) => {
     if (event.key === 'Escape') {
       if (!selectedContact) {
-        onClose(null);
+        if (onClose) {
+          onClose(null);
+        } else {
+          navigate(-1);
+        }
       }
     }
   };
@@ -84,7 +99,9 @@ const ContactList = ({
       (contact) => (contact.id === updatedContact.id ? updatedContact : contact),
     ));
     setSelectedContact(null); // Close the form after saving
-    onSave();
+    if (onSave) {
+      onSave();
+    }
   };
 
   const handleCopy = (inputValue) => {
@@ -100,6 +117,10 @@ const ContactList = ({
     const formattedString = formData.filter((item) => item).join(', ');
     handleCopy(formattedString);
   };
+
+  if (!firmId) {
+    return <p className="no-data">Chybí ID firmy.</p>;
+  }
 
   if (loading) {
     return <p className="no-data">Načítám...</p>;
@@ -125,7 +146,7 @@ const ContactList = ({
         />
       ) : (
         <>
-          <button className="close-button" type="button" onClick={onClose}>X</button>
+          <button className="close-button" type="button" onClick={handleClose}>X</button>
           <table className="responsive-table">
             <caption><h3>{`${firmName.split('/(kont)')[0]} - kontakty`}</h3></caption>
             <thead>
@@ -178,8 +199,8 @@ const ContactList = ({
 export default ContactList;
 
 ContactList.propTypes = {
-  firmId: PropTypes.string.isRequired,
-  onClose: PropTypes.func.isRequired,
-  firmName: PropTypes.string.isRequired,
-  onSave: PropTypes.func.isRequired,
+  firmId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  onClose: PropTypes.func,
+  firmName: PropTypes.string,
+  onSave: PropTypes.func,
 };

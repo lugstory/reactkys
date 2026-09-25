@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useUrl } from './UrlProvider';
 import isSmall from '../utils/mobileDetect';
 
@@ -18,35 +18,36 @@ const CampaignList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
   const [isWrapped, setIsWrapped] = useState(false);
 
   const toggleWrap = () => {
     setIsWrapped(!isWrapped);
   };
 
-  useEffect(() => {
-    const fetchContacts = async () => {
-      console.log('fetchContacts');
-
-      try {
-        const response = await axios.get(`${apiUrl}/campaigns/`);
-        if (Array.isArray(response.data) && response.data.length === 0
-          && response.data.msg !== undefined) {
-          setError('Žádné kontakty.');
-        } else {
-          console.log(response.data);
-          setCampaigns(response.data);
-        }
-      } catch (err) {
-        console.log(err);
-        setError(err.message);
-      } finally {
-        setLoading(false);
+  const fetchCampaigns = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(`${apiUrl}/campaigns/`);
+      if (Array.isArray(response.data) && response.data.length === 0
+        && response.data.msg !== undefined) {
+        setError('Žádné kontakty.');
+      } else {
+        console.log(response.data);
+        setCampaigns(response.data);
+        setError(null);
       }
-    };
+    } catch (err) {
+      console.log(err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchContacts();
-  }, [apiUrl]);
+  useEffect(() => {
+    fetchCampaigns();
+  }, [apiUrl, location.key, location.state?.refresh]);
 
   const handleEditClick = (campaign) => {
     navigate(`/campaignAdd/${campaign.id}`);

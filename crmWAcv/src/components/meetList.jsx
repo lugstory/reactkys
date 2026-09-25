@@ -2,13 +2,19 @@
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import EditMeetForm from './editMeetForm';
 import { useUrl } from './UrlProvider';
 import { convertDateTimeToCzech } from '../utils/czechdates';
 
 const MeetList = ({
-  firmId, onSave, firmName, onClose,
+  firmId: propFirmId, firmName: propFirmName, onClose,
 }) => {
+  const { firmId: routeFirmId } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const firmId = propFirmId ?? routeFirmId;
+  const firmName = propFirmName ?? location.state?.firmName ?? 'Firma';
   const { apiUrl } = useUrl();
   const [meets, setMeets] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -63,6 +69,11 @@ const MeetList = ({
   };
   const handleClose = () => {
     setSelectedMeet(null);
+    if (onClose) {
+      onClose();
+      return;
+    }
+    navigate(-1);
   };
   const handleSave = (meetupdatedMeet) => {
     const existingMeet = meets.find((meet) => meet.id === meetupdatedMeet.id);
@@ -83,7 +94,11 @@ const MeetList = ({
   const handleKeyDown = (event) => {
     if (event.key === 'Escape') {
       if (!selectedMeet) {
-        onClose(null);
+        if (onClose) {
+          onClose(null);
+        } else {
+          navigate(-1);
+        }
       }
     }
   };
@@ -93,6 +108,10 @@ const MeetList = ({
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [selectedMeet]);
+
+  if (!firmId) {
+    return <p className="no-data">Chybí ID firmy.</p>;
+  }
 
   if (loading) {
     return <p className="no-data">Načítám...</p>;
@@ -107,7 +126,7 @@ const MeetList = ({
   }
   return (
     <div className={`floating-layer ${!firmId ? 'hidden' : ''}`}>
-      <button className="close-button" type="button" onClick={onSave}>X</button>
+      <button className="close-button" type="button" onClick={handleClose}>X</button>
       {selectedMeet ? (
         <EditMeetForm meet={selectedMeet} onSave={handleSave} onClose={handleClose} firmName={firmName.split('/(kont)')[0]} />
       ) : (
@@ -146,8 +165,7 @@ const MeetList = ({
 export default MeetList;
 
 MeetList.propTypes = {
-  firmId: PropTypes.string.isRequired,
-  onSave: PropTypes.func.isRequired,
-  firmName: PropTypes.string.isRequired,
-  onClose: PropTypes.func.isRequired,
+  firmId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  firmName: PropTypes.string,
+  onClose: PropTypes.func,
 };

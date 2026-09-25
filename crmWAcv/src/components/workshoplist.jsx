@@ -2,16 +2,21 @@
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import EditWSForm from './editWSForm';
 import { useUrl } from './UrlProvider';
 import convertDateToCzech from '../utils/czechdates';
 
 const WorkshopList = ({
-  firmId,
-  onSave,
-  firmName,
+  firmId: propFirmId,
+  firmName: propFirmName,
   onClose,
 }) => {
+  const { firmId: routeFirmId } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const firmId = propFirmId ?? routeFirmId;
+  const firmName = propFirmName ?? location.state?.firmName ?? 'Firma';
   const { apiUrl } = useUrl();
   const [workshops, setWorkshops] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -68,6 +73,11 @@ const WorkshopList = ({
   };
   const handleClose = () => {
     setSelectedContact(null);
+    if (onClose) {
+      onClose();
+      return;
+    }
+    navigate(-1);
   };
   const handleSave = (updatedWorkshop) => {
     setWorkshops(workshops.map(
@@ -78,7 +88,11 @@ const WorkshopList = ({
   const handleKeyDown = (event) => {
     if (event.key === 'Escape') {
       if (!selectedContact) {
-        onClose(null);
+        if (onClose) {
+          onClose(null);
+        } else {
+          navigate(-1);
+        }
       }
     }
   };
@@ -88,6 +102,10 @@ const WorkshopList = ({
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [selectedContact]);
+
+  if (!firmId) {
+    return <p className="no-data">Chybí ID firmy.</p>;
+  }
 
   if (loading) {
     return <p className="no-data">načítání...</p>;
@@ -102,7 +120,7 @@ const WorkshopList = ({
           {error}
         </p>
       ) : ''}
-      <button className="close-button" type="button" onClick={onSave}>X</button>
+      <button className="close-button" type="button" onClick={handleClose}>X</button>
       {selectedContact ? (
         <EditWSForm contact={selectedContact} onSave={handleSave} onClose={handleClose} />
       ) : (
@@ -147,10 +165,9 @@ const WorkshopList = ({
 };
 
 WorkshopList.propTypes = {
-  firmId: PropTypes.string,
-  onSave: PropTypes.func.isRequired,
-  firmName: PropTypes.string.isRequired,
-  onClose: PropTypes.func.isRequired,
+  firmId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  firmName: PropTypes.string,
+  onClose: PropTypes.func,
 };
 
 export default WorkshopList;
