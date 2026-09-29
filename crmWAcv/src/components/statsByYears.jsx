@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import CopyFirmNamesButton from './CopyFirmNamesButton';
 import FetchWrapper from './fetchWrapper';
 import Notification from './notification';
 import SelectSchoolYear from './selectSchoolYear';

@@ -14,7 +14,6 @@ import EditEventForm from './components/editEventForm';
 import EventList from './components/eventsList';
 import ExportForm from './components/exportForm';
 import FirmList from './components/firmList';
-// import GAuthProvider from './components/google/googleAuthProvider';
 import HideColm from './components/hideColm';
 import MeetList from './components/meetList';
 import Nav from './components/nav';

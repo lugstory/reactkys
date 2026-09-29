@@ -14,7 +14,6 @@ import GiftList from './giftList';
 import MeetList from './meetList';
 import Notification from './notification';
 import PracticeList from './practiceList';
-// import SearchContact from './searchContact';
 import { useUrl } from './UrlProvider';
 import WorkshopList from './workshoplist';
 import { setCookie, getCookie, deleteCookie } from '../utils/cookie';

@@ -12,7 +12,6 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import CompanyChart from './companyChart';
-// import RingChart from './RingChart';
 import { useUrl } from './UrlProvider';
 import useIsSmall from '../utils/mobileDetect';
 
