@@ -18,8 +18,11 @@ if (isset($_GET["logout"])) {
     unset($_COOKIE['localhostUser']);
 }
 if (isset($_POST["username"])) {
-    $frontEnd_Url = "https://localhost:9000/?user=" . $_POST["username"];
-    if ($_SERVER['HTTP_HOST'] !== 'localhost') {
+    $httpHost = strtolower($_SERVER['HTTP_HOST'] ?? '');
+    $isLocalHost = str_starts_with($httpHost, 'localhost') || str_starts_with($httpHost, '127.0.0.1') || str_starts_with($httpHost, '[::1]') || str_starts_with($httpHost, '::1');
+
+    $frontEnd_Url = "http://localhost:8080/?user=" . $_POST["username"];
+    if (!$isLocalHost) {
         $frontEnd_Url = "/";
     }
 }

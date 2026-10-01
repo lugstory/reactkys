@@ -25,23 +25,41 @@ const PracticeListTable = () => {
   useEffect(() => {
     const fetchPractices = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(`${apiUrl}practices/${firmId}`);
-        if (Array.isArray(response.data) && response.data.length === 0
-          && response.data.msg !== undefined) {
-          setError('Žádné praxe.');
-        } else {
-          console.log(response.data);
-          setPractices(response.data);
+        const payload = response?.data;
+
+        if (payload && payload.error) {
+          setError(payload.message || payload.error);
+          setPractices([]);
+          return;
         }
+
+        if (!Array.isArray(payload)) {
+          setError('Neplatný formát dat z API.');
+          setPractices([]);
+          return;
+        }
+
+        if (payload.length === 0) {
+          setError('Žádné praxe.');
+          setPractices([]);
+          return;
+        }
+
+        console.log(payload);
+        setPractices(payload);
+        setError(null);
       } catch (err) {
         setError(err.message);
+        setPractices([]);
       } finally {
         setLoading(false);
       }
     };
 
     fetchPractices();
-  }, [loading, firmId]);
+  }, [apiUrl, firmId]);
 
   useEffect(() => {
     const handleBeforeUnload = (e) => {
@@ -226,9 +244,13 @@ const PracticeListTable = () => {
     return (
       <p className="no-data">
         Chyba:
+        {' '}
         {error}
       </p>
     );
+  }
+  if (!Array.isArray(practices)) {
+    return <p className="no-data">Neplatný formát dat.</p>;
   }
   return (
     <div className="responsive-table">

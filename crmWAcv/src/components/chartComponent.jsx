@@ -37,16 +37,25 @@ const ChartComponent = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${apiUrl}stats/cvcount`);
-        if (
-          Array.isArray(response.data)
-          && response.data.length === 0
-          && response.data.msg !== undefined
-        ) {
-          setError('Žádná data.');
-        } else {
-          console.log(response.data);
-          setData(response.data);
+        const payload = response?.data;
+
+        if (payload && payload.error) {
+          setError(payload.message || payload.error);
+          return;
         }
+
+        if (!Array.isArray(payload)) {
+          setError('Neplatný formát dat z API.');
+          return;
+        }
+
+        if (payload.length === 0) {
+          setError('Žádná data.');
+          return;
+        }
+
+        console.log(payload);
+        setData(payload);
       } catch (err) {
         setError(err.message);
       } finally {

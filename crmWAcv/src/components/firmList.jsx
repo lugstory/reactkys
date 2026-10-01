@@ -24,6 +24,9 @@ const getFirstPart = (text) => {
   return parts[0];
 };
 
+const getSafeFirmName = (row) => (row && typeof row.name === 'string' ? row.name : '');
+const getRowAnchorKey = (row) => getSafeFirmName(row).charAt(0)?.toLowerCase() || 'x';
+
 const FirmList = () => {
   const isSmall = useIsSmall();
   const [data, setData] = useState([]);
@@ -626,69 +629,73 @@ const FirmList = () => {
               </tr>
             </thead>
             <tbody>
-              {mappedData.map((row, rowIndex) => (
-                <tr key={row.id} id={`row-${row.name.charAt(0).toLowerCase()}`}>
-                  {/* checkbox sloupec */}
-                  <td key={`sel-${row.id}`}>
-                    <input
-                      type="checkbox"
-                      checked={selectedIds.has(row.id)}
-                      onClick={(e) => {
-                        // e.stopPropagation(); // ať klik na checkbox neotevírá edit
-                        console.log(row.id);
-                        toggleSelectWithShift(rowIndex, Number(row.id), e.shiftKey);
-                        console.log(row.id);
-                      }}
-                      onChange={() => {
-                        // podpora z klávesnice (mezerník) – bez shift rozsahu
-                        toggleSelectWithShift(rowIndex, row.id, false);
-                      }}
-                    />
-                  </td>
+              {mappedData.map((row, rowIndex) => {
+                const rowFirmName = getSafeFirmName(row);
 
-                  {columns.map((column) => (
-                    column === 'name' ? (
-                      <td
-                        key={column}
-                        onClick={() => handleEditClick(row.id, row.name)}
-                      >
-                        {(() => {
-                          const parts = row[column]?.split(/\/\(kont\)/) ?? [];
-                          return (
-                            <>
-                              <span className={isWrapped ? 'wrap' : ''}>{parts[0]}</span>
-                              {parts[1] && <span className="col-contacts">{parts[1]}</span>}
-                            </>
-                          );
-                        })()}
-                      </td>
-                    ) : (
-                      <td
-                        key={column}
-                        className={`col-${column} ${getSortIcon(column) ? 'sorted-colm' : ''}`}
-                      >
-                        {row[column]}
-                      </td>
-                    )
-                  ))}
+                return (
+                  <tr key={row.id} id={`row-${getRowAnchorKey(row)}`}>
+                    {/* checkbox sloupec */}
+                    <td key={`sel-${row.id}`}>
+                      <input
+                        type="checkbox"
+                        checked={selectedIds.has(row.id)}
+                        onClick={(e) => {
+                          // e.stopPropagation(); // ať klik na checkbox neotevírá edit
+                          console.log(row.id);
+                          toggleSelectWithShift(rowIndex, Number(row.id), e.shiftKey);
+                          console.log(row.id);
+                        }}
+                        onChange={() => {
+                          // podpora z klávesnice (mezerník) – bez shift rozsahu
+                          toggleSelectWithShift(rowIndex, row.id, false);
+                        }}
+                      />
+                    </td>
 
-                  <td>
-                    <div className={isSmall ? 'small-resolution' : ''}>
-                      <button type="button" onClick={() => handleEditContactClick(row.id, row.name)}>Kontakty</button>
-                      <button type="button" onClick={() => handleEditMeetClick(row.id, row.name)} className="blue-btn">Schůzky</button>
-                      <button type="button" onClick={() => handleworkshoplistClick(row.id, row.name)}>Akce</button>
-                      <button type="button" onClick={() => handleEditEventClick(row.id, row.name)} className="green-btn">Událost</button>
-                      <button type="button" onClick={() => handleGiftlistClick(row.id, row.name)} className="orange-btn">Dary</button>
-                      <button type="button" onClick={() => handlePracticeListClick(row.id, row.name)} className="purple-btn">Praxe</button>
-                      {user.user !== 'reader' ? (
-                        <button type="button" onClick={() => handledelClick(row.id, row.name)} className="del-btn">Smazat</button>
+                    {columns.map((column) => (
+                      column === 'name' ? (
+                        <td
+                          key={column}
+                          onClick={() => handleEditClick(row.id, rowFirmName)}
+                        >
+                          {(() => {
+                            const parts = row[column]?.split(/\/\(kont\)/) ?? [];
+                            return (
+                              <>
+                                <span className={isWrapped ? 'wrap' : ''}>{parts[0] || rowFirmName}</span>
+                                {parts[1] && <span className="col-contacts">{parts[1]}</span>}
+                              </>
+                            );
+                          })()}
+                        </td>
                       ) : (
-                        ''
-                      )}
-                    </div>
-                  </td>
-                </tr>
-              ))}
+                        <td
+                          key={column}
+                          className={`col-${column} ${getSortIcon(column) ? 'sorted-colm' : ''}`}
+                        >
+                          {row[column]}
+                        </td>
+                      )
+                    ))}
+
+                    <td>
+                      <div className={isSmall ? 'small-resolution' : ''}>
+                        <button type="button" onClick={() => handleEditContactClick(row.id, rowFirmName)}>Kontakty</button>
+                        <button type="button" onClick={() => handleEditMeetClick(row.id, rowFirmName)} className="blue-btn">Schůzky</button>
+                        <button type="button" onClick={() => handleworkshoplistClick(row.id, rowFirmName)}>Akce</button>
+                        <button type="button" onClick={() => handleEditEventClick(row.id, rowFirmName)} className="green-btn">Událost</button>
+                        <button type="button" onClick={() => handleGiftlistClick(row.id, rowFirmName)} className="orange-btn">Dary</button>
+                        <button type="button" onClick={() => handlePracticeListClick(row.id, rowFirmName)} className="purple-btn">Praxe</button>
+                        {user.user !== 'reader' ? (
+                          <button type="button" onClick={() => handledelClick(row.id, rowFirmName)} className="del-btn">Smazat</button>
+                        ) : (
+                          ''
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
           <div
