@@ -85,26 +85,26 @@ const CampaignContactsList = () => {
     }
   };
 
-  useEffect(() => {
-    const fetchContacts = async () => {
-      try {
-        const response = await axios.get(`${apiUrl}getCampaignContacts/${id}`);
-        if (Array.isArray(response.data)) {
-          setContacts(response.data);
-        } else {
-          setIsErrorVisible(error);
-          setError('Neplatná odpověď ze serveru.');
-        }
-      } catch (err) {
-        setIsErrorVisible(error);
-        setError(`Chyba při načítání: ${err.message}`);
-      } finally {
-        setLoading(false);
+  const fetchContacts = async () => {
+    try {
+      const response = await axios.get(`${apiUrl}getCampaignContacts/${id}`);
+      if (Array.isArray(response.data)) {
+        setContacts(response.data);
+      } else {
+        setIsErrorVisible(true);
+        setError('Neplatná odpověď ze serveru.');
       }
-    };
+    } catch (err) {
+      setIsErrorVisible(true);
+      setError(`Chyba při načítání: ${err.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchContacts();
-  }, [id, isSuccessVisible]);
+  }, [id, apiUrl]);
 
   const handleCheckboxChange = (contactId) => {
     console.log(contactId);
@@ -133,12 +133,13 @@ const CampaignContactsList = () => {
       alert('Vyberte kontakty a status.');
       return;
     }
+    const statusToSave = newStatus;
     setNewStatus('');
     const url = `${apiUrl}campaignContacts/${id}`;
     const data = {
       campaign_id: id,
       contact_ids: selectedContacts,
-      status: newStatus,
+      status: statusToSave,
     };
 
     axios({
@@ -147,12 +148,11 @@ const CampaignContactsList = () => {
       data,
     })
       .then((response) => {
-        console.log(response.data.msg);
         if (response.data.msg === true) {
           setIsSuccessVisible(true);
-          console.log('překe');
+          setTimeout(() => setIsSuccessVisible(false), 3000);
           setSelectedContacts([]);
-          // Volitelně: fetchContacts(); pokud chceš znovu načíst data
+          fetchContacts();
         } else {
           console.log('Chyba v odpovědi');
           setIsErrorVisible(true);
