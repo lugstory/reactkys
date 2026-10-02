@@ -16,12 +16,30 @@ const WorkshopList = ({
   const navigate = useNavigate();
   const location = useLocation();
   const firmId = propFirmId ?? routeFirmId;
-  const firmName = propFirmName ?? location.state?.firmName ?? 'Firma';
   const { apiUrl } = useUrl();
+  const [currentFirmName, setCurrentFirmName] = useState(
+    propFirmName || location.state?.firmName || '',
+  );
   const [workshops, setWorkshops] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedContact, setSelectedContact] = useState(null);
+
+  useEffect(() => {
+    if (!currentFirmName && firmId) {
+      axios.get(`${apiUrl}firm/${firmId}`)
+        .then((response) => {
+          if (Array.isArray(response.data) && response.data.length > 0 && response.data[0].name) {
+            setCurrentFirmName(response.data[0].name);
+          } else if (response.data && response.data.name) {
+            setCurrentFirmName(response.data.name);
+          }
+        })
+        .catch(() => {});
+    }
+  }, [apiUrl, firmId, currentFirmName]);
+
+  const displayFirmName = currentFirmName ? currentFirmName.split('/(kont)')[0] : 'Firma';
 
   useEffect(() => {
     const fetchworkshops = async () => {
@@ -77,7 +95,7 @@ const WorkshopList = ({
       onClose();
       return;
     }
-    navigate(-1);
+    navigate('/firm');
   };
   const handleSave = (updatedWorkshop) => {
     setWorkshops(workshops.map(
@@ -91,7 +109,7 @@ const WorkshopList = ({
         if (onClose) {
           onClose(null);
         } else {
-          navigate(-1);
+          navigate('/firm');
         }
       }
     }
@@ -112,20 +130,25 @@ const WorkshopList = ({
   }
 
   return (
-
-    <div className={`floating-layer ${!firmId ? 'hidden' : ''}`}>
+    <div className="responsive-table page-view">
+      <div className="subview-header">
+        <button type="button" onClick={handleClose} className="back-btn">
+          &larr; Zpět na seznam firem
+        </button>
+      </div>
       {error ? (
         <p className="edit-firm-success edit-firm-error">
           Chyba:&nbsp;
           {error}
         </p>
       ) : ''}
-      <button className="close-button" type="button" onClick={handleClose}>X</button>
       {selectedContact ? (
-        <EditWSForm contact={selectedContact} onSave={handleSave} onClose={handleClose} />
+        <div className="floating-layer">
+          <EditWSForm contact={selectedContact} onSave={handleSave} onClose={() => setSelectedContact(null)} />
+        </div>
       ) : (
         <table className="responsive-table">
-          <caption><h3>{`Akce s firmou ${firmName.split('/(kont)')[0]}`}</h3></caption>
+          <caption><h3>{`Akce s firmou ${displayFirmName}`}</h3></caption>
           <thead>
             <tr>
               <th className="hidden">ID</th>

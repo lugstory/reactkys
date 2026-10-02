@@ -14,13 +14,31 @@ const ContactList = ({
   const navigate = useNavigate();
   const location = useLocation();
   const firmId = propFirmId ?? routeFirmId;
-  const firmName = propFirmName ?? location.state?.firmName ?? 'Firma';
   const { apiUrl } = useUrl();
+  const [currentFirmName, setCurrentFirmName] = useState(
+    propFirmName || location.state?.firmName || '',
+  );
   const [contacts, setContacts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [msg, setMsg] = useState(null);
   const [selectedContact, setSelectedContact] = useState(null);
+
+  useEffect(() => {
+    if (!currentFirmName && firmId) {
+      axios.get(`${apiUrl}firm/${firmId}`)
+        .then((response) => {
+          if (Array.isArray(response.data) && response.data.length > 0 && response.data[0].name) {
+            setCurrentFirmName(response.data[0].name);
+          } else if (response.data && response.data.name) {
+            setCurrentFirmName(response.data.name);
+          }
+        })
+        .catch(() => {});
+    }
+  }, [apiUrl, firmId, currentFirmName]);
+
+  const displayFirmName = currentFirmName ? currentFirmName.split('/(kont)')[0] : 'Firma';
 
   useEffect(() => {
     const fetchContacts = async () => {
@@ -63,7 +81,7 @@ const ContactList = ({
       onClose();
       return;
     }
-    navigate(-1);
+    navigate('/firm');
   };
 
   const handledelClick = (contact) => {
@@ -134,63 +152,67 @@ const ContactList = ({
     );
   }
   return (
-    <div className={`floating-layer ${!firmId ? 'hidden' : ''}`}>
+    <div className="responsive-table page-view">
+      <div className="subview-header">
+        <button type="button" onClick={handleClose} className="back-btn">
+          &larr; Zpět na seznam firem
+        </button>
+      </div>
       {msg && (<Notification message={msg} type="edit-firm-success" />)}
       {error && (<Notification message={error} type="edit-firm-error" />)}
       {selectedContact ? (
-        <EditContactForm
-          contact={selectedContact}
-          onSave={handleSave}
-          onClose={handleClose}
-          firmName={firmName}
-        />
+        <div className="floating-layer">
+          <EditContactForm
+            contact={selectedContact}
+            onSave={handleSave}
+            onClose={() => setSelectedContact(null)}
+            firmName={displayFirmName}
+          />
+        </div>
       ) : (
-        <>
-          <button className="close-button" type="button" onClick={handleClose}>X</button>
-          <table className="responsive-table">
-            <caption><h3>{`${firmName.split('/(kont)')[0]} - kontakty`}</h3></caption>
-            <thead>
-              <tr>
-                <th>Hlavní</th>
-                <th>Aktivní</th>
-                <th>Foto</th>
-                <th>Jméno</th>
-                <th>E-mail</th>
-                <th>Telefon</th>
-                <th>LinkedIN</th>
-                <th />
+        <table className="responsive-table">
+          <caption><h3>{`${displayFirmName} - kontakty`}</h3></caption>
+          <thead>
+            <tr>
+              <th>Hlavní</th>
+              <th>Aktivní</th>
+              <th>Foto</th>
+              <th>Jméno</th>
+              <th>E-mail</th>
+              <th>Telefon</th>
+              <th>LinkedIN</th>
+              <th />
 
+            </tr>
+          </thead>
+          <tbody>
+            {contacts.map((contact) => (
+              <tr key={contact.id}>
+                <td data-label="Hlavní">{contact.main === '1' ? '\u2705' : '\u2610'}</td>
+                <td data-label="Aktivní">{contact.active_c === '1' ? '\u2705' : '\u2610'}</td>
+                <td data-label="Foto"><img src={contact.img} alt="" className="kontakt-img" /></td>
+                <td data-label="Jméno">{contact.surname}</td>
+                <td data-label="E-mail"><a href={`${contact.mailto.replace(/\+/g, ' ')}`}>{contact.email}</a></td>
+                <td data-label="Telefon"><a href={`tel:${contact.phone}`}>{contact.phone}</a></td>
+                <td data-label="LinkedIN">{ contact.linkedin ? (<a href={`${contact.linkedin}`}>LinkedIN</a>) : '\u00A0'}</td>
+                <td>
+                  <button type="button" onClick={() => handleEditClick(contact)}>upravit</button>
+                  <button type="button" onClick={() => handledelClick(contact)} className="del-btn">smazat</button>
+                  <button type="button" onClick={() => Clipboard([contact.surname, contact.email, contact.phone, contact.linkedin])} className="fn-btn">Kontakt do schránky</button>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {contacts.map((contact) => (
-                <tr key={contact.id}>
-                  <td data-label="Hlavní">{contact.main === '1' ? '\u2705' : '\u2610'}</td>
-                  <td data-label="Aktivní">{contact.active_c === '1' ? '\u2705' : '\u2610'}</td>
-                  <td data-label="Foto"><img src={contact.img} alt="" className="kontakt-img" /></td>
-                  <td data-label="Jméno">{contact.surname}</td>
-                  <td data-label="E-mail"><a href={`${contact.mailto.replace(/\+/g, ' ')}`}>{contact.email}</a></td>
-                  <td data-label="Telefon"><a href={`tel:${contact.phone}`}>{contact.phone}</a></td>
-                  <td data-label="LinkedIN">{ contact.linkedin ? (<a href={`${contact.linkedin}`}>LinkedIN</a>) : '\u00A0'}</td>
-                  <td>
-                    <button type="button" onClick={() => handleEditClick(contact)}>upravit</button>
-                    <button type="button" onClick={() => handledelClick(contact)} className="del-btn">smazat</button>
-                    <button type="button" onClick={() => Clipboard([contact.surname, contact.email, contact.phone, contact.linkedin])} className="fn-btn">Kontakt do schránky</button>
-                  </td>
-                </tr>
-              ))}
-              <tr>
-                <td />
-                <td />
-                <td />
-                <td />
-                <td />
-                <td />
-                <td><button type="button" onClick={() => handleEditClick({ id: null, firm_id: firmId, main: !contacts.filter((contact) => contact.main === '1').length })}>Přidat kontakt</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </>
+            ))}
+            <tr>
+              <td />
+              <td />
+              <td />
+              <td />
+              <td />
+              <td />
+              <td><button type="button" onClick={() => handleEditClick({ id: null, firm_id: firmId, main: !contacts.filter((contact) => contact.main === '1').length })}>Přidat kontakt</button></td>
+            </tr>
+          </tbody>
+        </table>
       )}
     </div>
   );

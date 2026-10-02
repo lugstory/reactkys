@@ -6,16 +6,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import ContactList from './contactList';
 import Filter from './filter';
 import EditFirmForm from './firmform';
 import FutureEvents from './futureEvents';
 import GiftList from './giftList';
-import MeetList from './meetList';
 import Notification from './notification';
 import PracticeList from './practiceList';
 import { useUrl } from './UrlProvider';
-import WorkshopList from './workshoplist';
 import { setCookie, getCookie, deleteCookie } from '../utils/cookie';
 import useIsSmall from '../utils/mobileDetect';
 
@@ -38,11 +35,8 @@ const FirmList = () => {
   const [error, setError] = useState(null);
   const [selectedFirm, setSelectedFirm] = useState(null);
   const [selectedFirmName, setSelectedFirmName] = useState(null);
-  const [selectedContact, setSelectedContact] = useState(null);
-  const [selectedMeet, setSelectedMeet] = useState(null);
   const [selectedGift, setSelectedGift] = useState(null);
   const [selectedPractice, setSelectedPractice] = useState(null);
-  const [selectedWS, setSelectedWS] = useState(0);
   const { url, apiUrl, user } = useUrl();
   const [filterText, setFilterText] = useState('');
   const [contactResult, setContactResult] = useState('');
@@ -283,19 +277,6 @@ const FirmList = () => {
     setRestData({ show_inactive: RestData.show_inactive });
   };
 
-  const handleSaveContact = () => {
-    // setSelectedContact(null);
-    fetchData();
-  };
-
-  const handleWS = () => {
-    setSelectedWS(null);
-  };
-
-  const handleMeet = () => {
-    setSelectedMeet(null);
-  };
-
   const handlePractice = () => {
     setSelectedPractice(null);
   };
@@ -352,18 +333,6 @@ const FirmList = () => {
 
   const handleContactResult = (result) => {
     setContactResult(result);
-  };
-
-  const handleCloseContact = () => {
-    setSelectedContact(null);
-  };
-
-  const handleCloseMeet = () => {
-    setSelectedMeet(null);
-  };
-
-  const handleCloseWS = () => {
-    setSelectedWS(null);
   };
 
   const handleCloseGift = () => {

@@ -14,12 +14,30 @@ const MeetList = ({
   const navigate = useNavigate();
   const location = useLocation();
   const firmId = propFirmId ?? routeFirmId;
-  const firmName = propFirmName ?? location.state?.firmName ?? 'Firma';
   const { apiUrl } = useUrl();
+  const [currentFirmName, setCurrentFirmName] = useState(
+    propFirmName || location.state?.firmName || '',
+  );
   const [meets, setMeets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedMeet, setSelectedMeet] = useState(null);
+
+  useEffect(() => {
+    if (!currentFirmName && firmId) {
+      axios.get(`${apiUrl}firm/${firmId}`)
+        .then((response) => {
+          if (Array.isArray(response.data) && response.data.length > 0 && response.data[0].name) {
+            setCurrentFirmName(response.data[0].name);
+          } else if (response.data && response.data.name) {
+            setCurrentFirmName(response.data.name);
+          }
+        })
+        .catch(() => {});
+    }
+  }, [apiUrl, firmId, currentFirmName]);
+
+  const displayFirmName = currentFirmName ? currentFirmName.split('/(kont)')[0] : 'Firma';
 
   useEffect(() => {
     const fetchMeets = async () => {
@@ -73,7 +91,7 @@ const MeetList = ({
       onClose();
       return;
     }
-    navigate(-1);
+    navigate('/firm');
   };
   const handleSave = (meetupdatedMeet) => {
     const existingMeet = meets.find((meet) => meet.id === meetupdatedMeet.id);
@@ -97,7 +115,7 @@ const MeetList = ({
         if (onClose) {
           onClose(null);
         } else {
-          navigate(-1);
+          navigate('/firm');
         }
       }
     }
@@ -125,13 +143,19 @@ const MeetList = ({
     );
   }
   return (
-    <div className={`floating-layer ${!firmId ? 'hidden' : ''}`}>
-      <button className="close-button" type="button" onClick={handleClose}>X</button>
+    <div className="responsive-table page-view">
+      <div className="subview-header">
+        <button type="button" onClick={handleClose} className="back-btn">
+          &larr; Zpět na seznam firem
+        </button>
+      </div>
       {selectedMeet ? (
-        <EditMeetForm meet={selectedMeet} onSave={handleSave} onClose={handleClose} firmName={firmName.split('/(kont)')[0]} />
+        <div className="floating-layer">
+          <EditMeetForm meet={selectedMeet} onSave={handleSave} onClose={() => setSelectedMeet(null)} firmName={displayFirmName} />
+        </div>
       ) : (
         <table className="responsive-table">
-          <caption><h3>{`${firmName.split('/(kont)')[0]} - schůzky`}</h3></caption>
+          <caption><h3>{`${displayFirmName} - schůzky`}</h3></caption>
           <thead>
             <tr>
               <th>Datum a čas</th>
