@@ -17,6 +17,20 @@ export default defineConfig(({ mode }) => ({
     port: 3000,
     open: false,
     host: '0.0.0.0',
+    proxy: {
+      '/rest.php': {
+        target: 'http://127.0.0.1:8000',
+        changeOrigin: true,
+      },
+      '/index.php': {
+        target: 'http://127.0.0.1:8000',
+        changeOrigin: true,
+      },
+      '/csvexport.csv': {
+        target: 'http://127.0.0.1:8000',
+        changeOrigin: true,
+      },
+    },
   },
   build: {
     outDir: 'dist',

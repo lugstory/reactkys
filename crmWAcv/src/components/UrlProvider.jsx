@@ -9,7 +9,7 @@ const UrlProvider = ({ children }) => {
   const [isDirty, setIsDirty] = useState(false);
   const url = PRODUCTION
     ? 'https://crm.skch.cz/ajax0/v3/'
-    : 'http://localhost/';
+    : (import.meta.env.VITE_API_BASE_URL || '/');
 
   const apiUrl = useMemo(() => `${url}rest.php/`, [url]);
 
