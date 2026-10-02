@@ -4,6 +4,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import DataTable from './DataTable';
 import { useUrl } from './UrlProvider';
 import isSmall from '../utils/mobileDetect';
 
@@ -89,68 +90,66 @@ const CampaignList = () => {
     );
   }
 
+  const campaignColumns = [
+    'id',
+    'name',
+    'created_date',
+    'sent_date_time',
+    'end_date',
+    'recipient_count',
+    'undelivered_count',
+    'confirmed_received_count',
+    'replied_count',
+    'note',
+  ];
+
+  const columnHeaders = {
+    id: 'ID',
+    name: 'Název',
+    created_date: 'Datum Vytvoření',
+    sent_date_time: 'Datum odeslání',
+    end_date: 'Datum ukončení',
+    recipient_count: 'Počet adresátů (firem)',
+    undelivered_count: 'Počet nedoručení',
+    confirmed_received_count: 'Počet potvrzení o doručení',
+    replied_count: 'Odpovědělo',
+    note: 'Poznámka',
+  };
+
   return (
     <div>
       <h1>Zasílání</h1>
-      <table className={`responsive-table ${isWrapped ? 'wrap-cells' : 'nowrap-cells'}`}>
-        <thead>
-          <tr>
-            <th>
-              ID
+      <DataTable
+        data={campaigns}
+        columns={campaignColumns}
+        wrapCells={isWrapped}
+        onToggleWrap={toggleWrap}
+        renderHeader={(col) => columnHeaders[col] || col}
+        renderCell={(campaign, col) => {
+          if (col === 'name') {
+            return (
               <span
-                onClick={toggleWrap}
-                style={{ cursor: 'pointer', fontSize: '1.2em, padding-left:1em' }}
-                title="Přepnout zalamování textu"
-              >
-                🔁
-              </span>
-            </th>
-            <th>Název</th>
-            <th>Datum Vytvoření</th>
-            <th>Datum odeslání</th>
-            <th>Datum ukončení</th>
-            <th>Počet adresátů (firem)</th>
-            <th>Počet nedoručení</th>
-            <th>Počet potvrzení o doručení</th>
-            <th>Odpovědělo</th>
-            <th>Poznámka</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>
-          {campaigns.map((campaign) => (
-            <tr key={campaign.id}>
-              <td>{campaign.id}</td>
-              <td
+                style={{ cursor: 'pointer', color: '#0366d6' }}
                 onClick={() => handleClick(campaign.id)}
               >
                 {getFirstPart(campaign.name)}
-              </td>
-              <td>{campaign.created_date}</td>
-              <td>{campaign.sent_date_time}</td>
-              <td>{campaign.end_date}</td>
-              <td>{campaign.recipient_count}</td>
-              <td>{campaign.undelivered_count}</td>
-              <td>{campaign.confirmed_received_count}</td>
-              <td>{campaign.replied_count}</td>
-              <td>{campaign.note}</td>
-              <td>
-                {user.user !== 'reader' ? (
-                  <div>
-                    <div className={isSmall() ? 'small-resolution' : ''}>
-                      <button type="button" onClick={() => handleEditClick(campaign)}>upravit</button>
-                      <button type="button" onClick={() => handleDelClick(campaign.id)} className="del-btn">smazat</button>
-                      <a href={`${apiUrl}campaignExport/${campaign.id}/?csvexport`} id="csv_export">CSV export</a>
-                    </div>
-                  </div>
-                ) : (
-                  ''
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+              </span>
+            );
+          }
+          return campaign[col];
+        }}
+        renderActions={(campaign) => (
+          user.user !== 'reader' ? (
+            <div>
+              <div className={isSmall() ? 'small-resolution' : ''}>
+                <button type="button" onClick={() => handleEditClick(campaign)}>upravit</button>
+                <button type="button" onClick={() => handleDelClick(campaign.id)} className="del-btn">smazat</button>
+                <a href={`${apiUrl}campaignExport/${campaign.id}/?csvexport`} id="csv_export">CSV export</a>
+              </div>
+            </div>
+          ) : null
+        )}
+      />
     </div>
   );
 };

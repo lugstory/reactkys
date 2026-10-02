@@ -7,6 +7,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Filter from './filter';
+import DataTable from './DataTable';
 import EditFirmForm from './firmform';
 import FutureEvents from './futureEvents';
 import GiftList from './giftList';
@@ -545,128 +546,63 @@ const FirmList = () => {
             </div>
           )}
 
-          <table className={`firmlist responsive-table ${isWrapped ? 'wrap-cells' : 'nowrap-cells'}`}>
-            {mappedData.length !== 0 ? '' : (
-              <caption>
-                {mappedData.length}
-                {' '}
-                záznamů
-              </caption>
+          <DataTable
+            data={mappedData}
+            columns={columns}
+            className="firmlist"
+            emptyCaption={`${mappedData.length} záznamů`}
+            sortConfig={sortConfig}
+            onSort={sortByKey}
+            renderHeader={(column, count) => (
+              column === 'name' ? `Firma (${count})` : column
             )}
-            <thead>
-              <tr>
-                {/* nový sloupec pro checkboxy */}
-                <th>
-                  <span
-                    onClick={toggleWrap}
-                    style={{
-                      cursor: 'pointer',
-                      fontSize: '1.2em',
-                      paddingLeft: '1em',
-                    }}
-                    title="Přepnout zalamování textu"
-                  >
-                    🔁
-                  </span>
-                  &nbsp;Vybrat
-                </th>
+            renderCell={(row, column) => {
+              const rowFirmName = getSafeFirmName(row);
+              if (column !== 'name') {
+                return row[column];
+              }
 
-                {columns.map((column) => (
-                  <th
-                    key={column}
-                    onClick={() => sortByKey(column)}
-                    className={`col-${column} ${getSortIcon(column) ? 'sorted-colm' : ''}`}
-                  >
-                    {column === 'name' ? (
-                      <>
-                        Firma (
-                        {' '}
-                        {mappedData.length}
-                        {' '}
-                        )
-                        {getSortIcon(column)}
-                      </>
-                    ) : (
-                      `${column} ${getSortIcon(column)}`
-                    )}
-                  </th>
-                ))}
-                <th style={{ 'text-align': 'left' }}>
-                  {addFirmBnt()}
-                  <a href={csvURL} id="csv_export">CSV export</a>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {mappedData.map((row, rowIndex) => {
-                const rowFirmName = getSafeFirmName(row);
-
-                return (
-                  <tr key={row.id} id={`row-${getRowAnchorKey(row)}`}>
-                    {/* checkbox sloupec */}
-                    <td key={`sel-${row.id}`}>
-                      <input
-                        type="checkbox"
-                        checked={selectedIds.has(row.id)}
-                        onClick={(e) => {
-                          // e.stopPropagation(); // ať klik na checkbox neotevírá edit
-                          console.log(row.id);
-                          toggleSelectWithShift(rowIndex, Number(row.id), e.shiftKey);
-                          console.log(row.id);
-                        }}
-                        onChange={() => {
-                          // podpora z klávesnice (mezerník) – bez shift rozsahu
-                          toggleSelectWithShift(rowIndex, row.id, false);
-                        }}
-                      />
-                    </td>
-
-                    {columns.map((column) => (
-                      column === 'name' ? (
-                        <td
-                          key={column}
-                          onClick={() => handleEditClick(row.id, rowFirmName)}
-                        >
-                          {(() => {
-                            const parts = row[column]?.split(/\/\(kont\)/) ?? [];
-                            return (
-                              <>
-                                <span className={isWrapped ? 'wrap' : ''}>{parts[0] || rowFirmName}</span>
-                                {parts[1] && <span className="col-contacts">{parts[1]}</span>}
-                              </>
-                            );
-                          })()}
-                        </td>
-                      ) : (
-                        <td
-                          key={column}
-                          className={`col-${column} ${getSortIcon(column) ? 'sorted-colm' : ''}`}
-                        >
-                          {row[column]}
-                        </td>
-                      )
-                    ))}
-
-                    <td>
-                      <div className={isSmall ? 'small-resolution' : ''}>
-                        <button type="button" onClick={() => handleEditContactClick(row.id, rowFirmName)}>Kontakty</button>
-                        <button type="button" onClick={() => handleEditMeetClick(row.id, rowFirmName)} className="blue-btn">Schůzky</button>
-                        <button type="button" onClick={() => handleworkshoplistClick(row.id, rowFirmName)}>Akce</button>
-                        <button type="button" onClick={() => handleEditEventClick(row.id, rowFirmName)} className="green-btn">Událost</button>
-                        <button type="button" onClick={() => handleGiftlistClick(row.id, rowFirmName)} className="orange-btn">Dary</button>
-                        <button type="button" onClick={() => handlePracticeListClick(row.id, rowFirmName)} className="purple-btn">Praxe</button>
-                        {user.user !== 'reader' ? (
-                          <button type="button" onClick={() => handledelClick(row.id, rowFirmName)} className="del-btn">Smazat</button>
-                        ) : (
-                          ''
-                        )}
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+              const parts = row[column]?.split(/\/\(kont\)/) ?? [];
+              return (
+                <span
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => handleEditClick(row.id, rowFirmName)}
+                >
+                  <span className={isWrapped ? 'wrap' : ''}>{parts[0] || rowFirmName}</span>
+                  {parts[1] && <span className="col-contacts">{parts[1]}</span>}
+                </span>
+              );
+            }}
+            renderActions={(row) => {
+              const rowFirmName = getSafeFirmName(row);
+              return (
+                <div className={isSmall ? 'small-resolution' : ''}>
+                  <button type="button" onClick={() => handleEditContactClick(row.id, rowFirmName)}>Kontakty</button>
+                  <button type="button" onClick={() => handleEditMeetClick(row.id, rowFirmName)} className="blue-btn">Schůzky</button>
+                  <button type="button" onClick={() => handleworkshoplistClick(row.id, rowFirmName)}>Akce</button>
+                  <button type="button" onClick={() => handleEditEventClick(row.id, rowFirmName)} className="green-btn">Událost</button>
+                  <button type="button" onClick={() => handleGiftlistClick(row.id, rowFirmName)} className="orange-btn">Dary</button>
+                  <button type="button" onClick={() => handlePracticeListClick(row.id, rowFirmName)} className="purple-btn">Praxe</button>
+                  {user.user !== 'reader' ? (
+                    <button type="button" onClick={() => handledelClick(row.id, rowFirmName)} className="del-btn">Smazat</button>
+                  ) : null}
+                </div>
+              );
+            }}
+            rowId={(row) => Number(row.id)}
+            rowClassName={(row) => `row-${getRowAnchorKey(row)}`}
+            selectable
+            selectedIds={selectedIds}
+            onToggleSelect={(rowIndex, id, shiftKey) => toggleSelectWithShift(rowIndex, id, shiftKey)}
+            wrapCells={isWrapped}
+            onToggleWrap={toggleWrap}
+            actionsHeader={(
+              <>
+                {addFirmBnt()}
+                <a href={csvURL} id="csv_export">CSV export</a>
+              </>
+            )}
+          />
           <div
             className="selection-panel"
             style={{
