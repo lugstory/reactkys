@@ -20,6 +20,7 @@ const DataTable = ({
   onToggleSelect,
   wrapCells,
   onToggleWrap,
+  onToggleSelectAll,
   actionsHeader,
 }) => {
   const getSortIcon = (column) => {
@@ -32,6 +33,15 @@ const DataTable = ({
   const getColumnClassName = (column) => (
     `col-${column} ${getSortIcon(column) ? 'sorted-colm' : ''}`
   );
+
+  const isRowSelected = (id) => {
+    if (!selectedIds) return false;
+    return (
+      selectedIds.has(id)
+      || selectedIds.has(Number(id))
+      || selectedIds.has(String(id))
+    );
+  };
 
   return (
     <table className={`${className} responsive-table ${wrapCells ? 'wrap-cells' : 'nowrap-cells'}`}>
@@ -49,10 +59,19 @@ const DataTable = ({
                   className="table-wrap-toggle"
                   title="Přepnout zalamování textu"
                 >
-                  ↔
+                  🔁
                 </button>
               ) : null}
               {' '}
+              {onToggleSelectAll ? (
+                <input
+                  type="checkbox"
+                  checked={data.length > 0 && data.every((row) => isRowSelected(rowId ? rowId(row) : row.id))}
+                  onChange={(event) => onToggleSelectAll(event.target.checked)}
+                  title="Vybrat vše"
+                  style={{ cursor: 'pointer', verticalAlign: 'middle', marginRight: '4px' }}
+                />
+              ) : null}
               Vybrat
             </th>
           ) : null}
@@ -83,8 +102,13 @@ const DataTable = ({
                 <td>
                   <input
                     type="checkbox"
-                    checked={selectedIds ? selectedIds.has(id) : false}
-                    onChange={(event) => onToggleSelect?.(rowIndex, id, event.nativeEvent?.shiftKey || false)}
+                    checked={isRowSelected(id)}
+                    onClick={(event) => {
+                      onToggleSelect?.(rowIndex, id, Boolean(event.shiftKey));
+                    }}
+                    onChange={() => {
+                      // Handled by onClick to reliably capture shiftKey from MouseEvent
+                    }}
                   />
                 </td>
               ) : null}
@@ -124,6 +148,7 @@ DataTable.propTypes = {
   onToggleSelect: PropTypes.func,
   wrapCells: PropTypes.bool,
   onToggleWrap: PropTypes.func,
+  onToggleSelectAll: PropTypes.func,
   actionsHeader: PropTypes.node,
 };
 
@@ -144,6 +169,7 @@ DataTable.defaultProps = {
   onToggleSelect: undefined,
   wrapCells: false,
   onToggleWrap: undefined,
+  onToggleSelectAll: undefined,
   actionsHeader: null,
 };
 

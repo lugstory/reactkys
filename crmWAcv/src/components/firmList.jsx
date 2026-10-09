@@ -55,17 +55,18 @@ const FirmList = () => {
   const [lastSelectedIndex, setLastSelectedIndex] = useState(null);
 
   const toggleSelectWithShift = (index, id, shiftKey) => {
+    const targetId = Number(id);
     setSelectedIds((prev) => {
       const next = new Set(prev);
 
       // cílový stav checkboxu: označit / odznačit dle aktuálního id
-      const willSelect = !next.has(id);
+      const willSelect = !next.has(targetId);
 
       if (shiftKey && lastSelectedIndex !== null) {
         // rozsah podle aktuálně viditelného pořadí (pole data)
         const start = Math.min(lastSelectedIndex, index);
         const end = Math.max(lastSelectedIndex, index);
-        const idsInRange = data.slice(start, end + 1).map((row) => row.id);
+        const idsInRange = data.slice(start, end + 1).map((row) => Number(row.id));
 
         idsInRange.forEach((rid) => {
           if (willSelect) {
@@ -74,17 +75,26 @@ const FirmList = () => {
             next.delete(rid);
           }
         });
-      } else
-        if (willSelect) {
-          next.add(id);
-        } else {
-          next.delete(id);
-        }
+      } else if (willSelect) {
+        next.add(targetId);
+      } else {
+        next.delete(targetId);
+      }
       return next;
     });
 
     // nastav novou kotvu (poslední kliknutý index)
     setLastSelectedIndex(index);
+  };
+
+  const handleToggleSelectAll = (checked) => {
+    if (checked) {
+      const allIds = new Set(data.map((row) => Number(row.id)));
+      setSelectedIds(allIds);
+    } else {
+      setSelectedIds(new Set());
+      setLastSelectedIndex(null);
+    }
   };
 
   const handleClearSelection = () => {
@@ -95,15 +105,19 @@ const FirmList = () => {
 
   const handlePasteToPage = () => {
     // získáme názvy firem podle ID z kompletních dat (prevData)
-    const namesById = new Map(prevData.map((item) => [item.id, item.name]));
+    const namesById = new Map(prevData.map((item) => [Number(item.id), item.name]));
     const names = Array.from(selectedIds)
-      .map((sid) => getFirstPart(namesById.get(sid) ?? ''))
+      .map((sid) => getFirstPart(namesById.get(Number(sid)) ?? ''))
       .filter(Boolean);
     const text = names.join('; ');
     setSelectionText(text);
     console.log(text);
-    // Volitelné: zkopírovat i do schránky
-    // try { navigator.clipboard.writeText(text); } catch (e) {}
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 3000);
+      }).catch(() => {});
+    }
   };
 
   const makeHandleFilter = (value, event) => {
@@ -594,6 +608,7 @@ const FirmList = () => {
             selectable
             selectedIds={selectedIds}
             onToggleSelect={(rowIndex, id, shiftKey) => toggleSelectWithShift(rowIndex, id, shiftKey)}
+            onToggleSelectAll={handleToggleSelectAll}
             wrapCells={isWrapped}
             onToggleWrap={toggleWrap}
             actionsHeader={(
